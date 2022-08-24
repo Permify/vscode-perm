@@ -7,5 +7,19 @@
             "}"
         ],
         "description": "entity definition"
+    },
+    "relation": {
+        "prefix": "relation",
+        "body": [
+            "relation ${1:foo} @${2:bar}"
+        ],
+        "description": "relation definition"
+    },
+    "action": {
+        "prefix": "action",
+        "body": [
+            "action ${1:foo} = ${0}"
+        ],
+        "description": "action definition"
     }
 }
