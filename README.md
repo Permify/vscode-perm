@@ -6,11 +6,7 @@ Syntax support for the Perm authorization language. This extension adds basic fe
 - Code snippets
 
 ## Installation
-You can install the plugin by searching for Perm extension in the extensions market place, or by entering
-```
-ext install perm
-```
-in to the command palette.
+You can install the plugin by searching for Perm extension in the extensions market place.
 
 ## For more information
 * [Permify](http://permify.co)
