@@ -1,0 +1,11 @@
+{
+    "entity": {
+        "prefix": "entity",
+        "body": [
+            "entity ${1:foo} {",
+            "\t${0}",
+            "}"
+        ],
+        "description": "entity definition"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "perm",
+  "displayName": "perm",
+  "description": "Perm Authorization Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Linters"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "perm",
+      "aliases": ["Perm Authorization Language", "perm"],
+      "extensions": [".perm"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "perm",
+      "scopeName": "source.perm",
+      "path": "./syntaxes/perm.tmLanguage.json"
+    }],
+    "snippets": [{
+			"language": "perm",
+			"path": "./snippets/perm.json"
+		}]
+  }
+}

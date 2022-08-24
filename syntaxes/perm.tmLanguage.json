@@ -1,0 +1,52 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Perm Authorization Language",
+    "patterns": [{
+        "include": "#keywords"
+    }, {
+        "include": "#strings"
+    }, {
+        "include": "#constants"
+    }, {
+        "include": "#relation.types"
+    }, {
+        "include": "#comments"
+    }],
+    "repository": {
+        "keywords": {
+            "patterns": [{
+                "name": "keyword.control.perm",
+                "match": "\\b(entity|relation|action|return|and|or|not)\\b"
+            }]
+        },
+        "strings": {
+            "name": "string.quoted.double.perm",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [{
+                "name": "constant.character.escape.perm",
+                "match": "\\\\."
+            }]
+        },
+        "comments": {
+            "patterns": [{
+                "name": "comment.line",
+                "begin": "//",
+                "end": "\n"
+            }]
+        },
+        "constants": {
+            "patterns": [{
+                "name": "constant.character",
+                "match": "="
+            }]
+        },
+        "relation.types": {
+            "patterns": [{
+                "name": "entity.name.type",
+                "match": "\\B@\\w+#?\\w+"
+            }]
+        }
+    },
+    "scopeName": "source.perm"
+}
