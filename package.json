@@ -9,6 +9,22 @@
   "categories": [
     "Linters"
   ],
+  "publisher": "permify",
+  "license": "Apache-2.0",
+  "bugs": {
+		"url": "https://github.com/Permify/vscode-perm/issues"
+	},
+  "icon": "assets/icon.png",
+  "homepage": "https://github.com/Permify/vscode-perm",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/Permify/vscode-perm.git"
+	},
+  "keywords": [
+		"Permify",
+		"Perm",
+		"Authorization"
+	],
   "contributes": {
     "languages": [{
       "id": "perm",

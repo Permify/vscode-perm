@@ -13,5 +13,3 @@ in to the command palette.
 
 ## For more information
 * [Permify](http://permify.co)
-
-**Enjoy!**
