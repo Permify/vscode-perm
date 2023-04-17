@@ -16,7 +16,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.perm",
-                "match": "\\b(entity|relation|action|return|and|or|not)\\b"
+                "match": "\\b(entity|relation|permission|return|and|or|not)\\b"
             }]
         },
         "strings": {

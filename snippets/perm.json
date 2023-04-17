@@ -15,11 +15,11 @@
         ],
         "description": "relation definition"
     },
-    "action": {
-        "prefix": "action",
+    "permission": {
+        "prefix": "permission",
         "body": [
-            "action ${1:foo} = ${0}"
+            "permission ${1:foo} = ${0}"
         ],
-        "description": "action definition"
+        "description": "permission definition"
     }
 }

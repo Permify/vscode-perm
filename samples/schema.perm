@@ -5,17 +5,17 @@ entity organization {
 	relation admin @user
 	relation member @user
 
-	action create_repository = (admin or member)
-	action delete = admin
+	permission create_repository = (admin or member)
+	permission delete = admin
 }
 
 // comment
 entity repository {
-    relation owner    @user  @organization#member
+    relation owner    @user @organization#member
     relation parent   @organization
 
 	// comment
-    action push   = owner 
-    action read   = owner and (parent.admin and not parent.member) 
-    action delete = parent.member and (parent.admin or owner)
+    permission push   = owner 
+    permission read   = owner and (parent.admin and not parent.member) 
+    permission delete = parent.member and (parent.admin or owner)
 }
