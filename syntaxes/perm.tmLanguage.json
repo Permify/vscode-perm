@@ -193,13 +193,44 @@
       ]
     },
     "strings": {
-      "begin": "\"",
-      "end": "\"",
-      "name": "string.quoted.double.perm",
       "patterns": [
         {
-          "match": "\\\\.",
-          "name": "constant.character.escape.perm"
+          "name": "string.quoted.single.perm",
+          "begin": "'",
+          "end": "'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.perm"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.perm"
+            }
+          },
+          "patterns": [{
+            "name": "constant.character.escape.perm",
+            "match": "\\\\."
+          }]
+        },
+        {
+          "name": "string.quoted.double.perm",
+          "begin": "\"",
+          "end": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.perm"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.perm"
+            }
+          },
+          "patterns": [{
+            "name": "constant.character.escape.perm",
+            "match": "\\\\."
+          }]
         }
       ]
     },
