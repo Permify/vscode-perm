@@ -2,35 +2,59 @@
   "name": "perm",
   "displayName": "perm",
   "description": "Perm Authorization Language",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.60.0"
   },
   "categories": [
-    "Linters"
+    "Linters",
+    "Formatters",
+    "Programming Languages"
   ],
   "publisher": "permify",
   "license": "Apache-2.0",
   "bugs": {
-		"url": "https://github.com/Permify/vscode-perm/issues"
-	},
+    "url": "https://github.com/Permify/vscode-perm/issues"
+  },
   "icon": "assets/icon.jpg",
   "homepage": "https://github.com/Permify/vscode-perm",
   "repository": {
-		"type": "git",
-		"url": "https://github.com/Permify/vscode-perm.git"
-	},
+    "type": "git",
+    "url": "https://github.com/Permify/vscode-perm.git"
+  },
   "keywords": [
-		"Permify",
-		"Perm",
-		"Authorization"
-	],
+    "Permify",
+    "Perm",
+    "Authorization"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:perm"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node16 --minify",
+    "watch": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node16 --sourcemap --watch",
+    "typecheck": "tsc --noEmit",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.60.0",
+    "esbuild": "^0.21.0",
+    "typescript": "^5.4.0",
+    "@vscode/vsce": "^2.24.0"
+  },
   "contributes": {
     "languages": [{
       "id": "perm",
       "aliases": ["Perm Authorization Language", "perm"],
       "extensions": [".perm"],
-      "configuration": "./language-configuration.json"
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "./assets/perm-file-light.svg",
+        "dark": "./assets/perm-file-dark.svg"
+      }
     }],
     "grammars": [{
       "language": "perm",
@@ -38,8 +62,67 @@
       "path": "./syntaxes/perm.tmLanguage.json"
     }],
     "snippets": [{
-			"language": "perm",
-			"path": "./snippets/perm.json"
-		}]
+      "language": "perm",
+      "path": "./snippets/perm.json"
+    }],
+    "configuration": {
+      "title": "Perm",
+      "properties": {
+        "perm.format.indentSize": {
+          "type": ["number", "null"],
+          "default": null,
+          "description": "Spaces per indent level. Falls back to editor.tabSize when null."
+        },
+        "perm.format.indentStyle": {
+          "type": "string",
+          "enum": ["space", "tab", "auto"],
+          "default": "auto",
+          "description": "Indent character. 'auto' follows editor.insertSpaces."
+        },
+        "perm.format.spaceAroundOperators": {
+          "type": "boolean",
+          "default": true,
+          "description": "Insert spaces around =, and, or, not, comparison operators."
+        },
+        "perm.format.alignEquals": {
+          "type": "boolean",
+          "default": true,
+          "description": "Align = columns for consecutive permission/action declarations."
+        },
+        "perm.format.alignRelationTargets": {
+          "type": "boolean",
+          "default": true,
+          "description": "Align @ columns for consecutive relation declarations inside an entity."
+        },
+        "perm.format.trimTrailingWhitespace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Strip trailing whitespace on each line."
+        },
+        "perm.lint.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable diagnostics for .perm files."
+        },
+        "perm.lint.namingConvention": {
+          "type": "string",
+          "enum": ["error", "warning", "off"],
+          "default": "warning",
+          "description": "Flag entity/relation/permission names that are not snake_case."
+        },
+        "perm.lint.unusedRelation": {
+          "type": "string",
+          "enum": ["error", "warning", "off"],
+          "default": "warning",
+          "description": "Flag relations declared but never referenced in a permission."
+        },
+        "perm.lint.redundantParens": {
+          "type": "string",
+          "enum": ["error", "warning", "off"],
+          "default": "warning",
+          "description": "Flag redundant parentheses in permission expressions."
+        }
+      }
+    }
   }
 }
